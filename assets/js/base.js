@@ -1,87 +1,146 @@
-// arr.forEach()
+// objects
 
-// Ejercicio 1 .forEach()
-// Dado un array con solo números
-// obtener el  valor mas alto
-// input: [1,4,3,2,5]
-// output: -> [5]
+// let carObject = {
+//     modelo: 'jetta',
+//     marca: 'vw',
+//     color: 'rojo',
+//     year: 2020,
+//     tenencias: [2019, 2020, 2021]
+// }
 
-/* const mostBigger = (arr) => {
-	let biggest = arr[0]
-	arr.forEach( (value, index, array) => {
-		if(biggest < value){
-			biggest = value
-		}
-	})
-	return biggest
-}
-console.log( mostBigger( [1, 4, 10] ) )
+// console.log(carObject)
+// console.log(carObject.tenencias [2])
+
+// objeto koder
+// let koder = {
+//     generation: '15g',
+//     name: 'Alberto',
+//     lastName: 'Barragan',
+//     age: 28,
+//     experience: 'no',
+//     module: ['js', 'maquetado', 'react']
+// }
+// koder.isMentor = true
+// koder.modulos = ['js', 'node js', 'cloud']
+// console.log(koder.isMentor)
+// console.log(koder.generation)
+// console.log(koder.name.toLocaleUpperCase())
+
+// expected output
+//list with number
+// let koder = {
+//     generation: '15g',
+//     name: 'Alberto',
+//     lastName: 'Barragan',
+//     age: 28,
+//     experience: 'no',
+//     module: ['js', 'maquetado', 'react']
+// }
+// let counter=1
+// for (const property in koder) {
+//         console.log(`${counter}. ${property}: ${koder[property]}`)
+//         counter++  
+// }
+
+//ejercicios
+/**
+ * contar el numero de empleados
+ * suma total a pagar
+ * son # empleados y el total es #
+ */
+// let salaries = {
+//     'juan':20000,
+//     'albert': 50000,
+//     'jorge': 45000
+// }
+// let counter=0
+// let sal=0
+// for(const property in salaries){
+//     counter++
+//     sal += salaries[property]
+// }
+// console.log(`son ${counter} y el total es ${sal}`)
+
+/**
+ * arrow function.
+ * recibir un objeto.
+ * devolver un array con todas
+ * las propiedades que son un string.
+ * entrada: objOnlyStrings
+ * [modelo, marca, color, version, origen]
  */
 
-//Como sacar el numero mas pequeño
-/* const littleNumber = (arr) => {
-	let smallest = arr[0]
-	arr.forEach( (value, index, array) => {
-		if(smallest > value){
-			smallest = value
-		}
-	})
-	return smallest
-}
-console.log( littleNumber( [2,1, 4, 10] ) ) */
+// let objOnlyStrings = {
+//     modelo: 'jetta',
+//     marca: 'vw',
+//     color: 'rojo',
+//     year: 2020,
+//     tenencias: [2019, 2020, 2021],
+//     version: 'sport',
+//     origen: 'Mexico'
+// }
 
-//arr.map
-/* const smallerNumber = (arr) => {
-	let smaller = arr[0]
-	
-	arr.forEach( (value) => {
-		if(smaller > value){
-			smaller = value
-		}
-	})
-	return smaller
-}
-// console.log( smallerNumber( [5,7, 3, 4, 10] ) )
-// arr.map()
-const arrExample = [11,2,3,10,5]
-const resultado = arrExample.map( (val) => {
-	return val * 2
+// const filterStringObject = (obj)=>{
+//     let result =[]
+//     for(const key in obj){
+//         if (typeof obj[key]==='string'){
+//             result.push(key)
+//         }
+//     }
+//     return result
+// }
+
+// console.log(filterStringObject(objOnlyStrings))
+
+
+/**
+ * 1. Declarar una funcion que reciba un objeto
+2. Declarar un array vacio
+3. iterar el objeto ( for in )
+4. -- En cada iteracion 
+5. ----- Obtener el valor de cada llave
+6. ----- Verificar si es un string
+7. ----- sí si, Agregar al array
+8. -- fin iteracion
+9. retornar el array 
+ */
+
+// Array de objetos
+let koders =  [
+    {
+        name: 'jorge luis',
+        lastName: 'Camarillo',
+        age: 30,
+        generation: 6,
+        modulos: ['js','node js', 'cloud'],
+    },
+    {
+        name: 'Erik',
+        lastName: 'Gutierrez',
+        age: 20,
+        generation: 15,
+        modulos: ['js'],
+    },
+    {
+        name: 'Sara',
+        lastName: 'Reveles',
+        age: 24,
+        generation: 12,
+        modulos: ['js'],
+    }
+]
+
+koders.forEach((element, index, array) => {
+    // console.log(element.lastName)
+    // console.log(element.age)
+    // console.log(element.generation)
+    // console.log(element.modulos)
+    console.log(`${element.name} ${element.lastName} tiene ${element.age} años`)  
 })
-console.log(resultado) */
 
-// dado un array de numeros,
-// retornar un array con los numeros convertidos a string
-// Entrada : [11,2,3,10,5]
-// Salida : ['11','2','3','10','5']
-
-/* let arrEx = [11, 2, 3, 10, 5];
-let result = arrEx.map((val) => {
-  return val.toString();
-});
-console.log(result)
+/**
+ * 1. Hacer una funcion que reciba un objeto de koders
+ * 2. Obtener la suma de todas las edades
+ * 3. Retornar el total
+ * hint: .forEach() .reduce()
  */
-/* const arrEx = (arr) => arr.map((val)=> val.toString())
-console.log(arrEx([11,2,3,10,5])) */
-
-// .map()
-// función
-// Dado unn array como parametro
-// capitalizar todos los elementos que sean strings
-// typeof variable
-// input: ['hOlA', 'mundo', 123]
-// output -> ['Hola','Mundo', 123]
-
-const capitalizeArr = (arr) => {
-	let arrcapitalized =[]
-	arr.map((val) => {
-	  if (typeof val == "string") {
-		val.toLowerCase()
-		val[0].toLocaleUpperCase()
-	  }
-  });
-	return arr
-  }
-  
-  
-  let resultCap = capitalizeArr(["hOlA", "mundo", 123]);
-  console.log(resultCap);
