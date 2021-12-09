@@ -1,87 +1,113 @@
-// arr.forEach()
-
-// Ejercicio 1 .forEach()
-// Dado un array con solo números
-// obtener el  valor mas alto
-// input: [1,4,3,2,5]
-// output: -> [5]
-
-/* const mostBigger = (arr) => {
-	let biggest = arr[0]
-	arr.forEach( (value, index, array) => {
-		if(biggest < value){
-			biggest = value
-		}
-	})
-	return biggest
-}
-console.log( mostBigger( [1, 4, 10] ) )
+/**
+ * arr.filter(function)
  */
 
-//Como sacar el numero mas pequeño
-/* const littleNumber = (arr) => {
-	let smallest = arr[0]
-	arr.forEach( (value, index, array) => {
-		if(smallest > value){
-			smallest = value
-		}
-	})
-	return smallest
-}
-console.log( littleNumber( [2,1, 4, 10] ) ) */
 
-//arr.map
-/* const smallerNumber = (arr) => {
-	let smaller = arr[0]
-	
-	arr.forEach( (value) => {
-		if(smaller > value){
-			smaller = value
-		}
-	})
-	return smaller
-}
-// console.log( smallerNumber( [5,7, 3, 4, 10] ) )
-// arr.map()
-const arrExample = [11,2,3,10,5]
-const resultado = arrExample.map( (val) => {
-	return val * 2
-})
-console.log(resultado) */
-
-// dado un array de numeros,
-// retornar un array con los numeros convertidos a string
-// Entrada : [11,2,3,10,5]
-// Salida : ['11','2','3','10','5']
-
-/* let arrEx = [11, 2, 3, 10, 5];
-let result = arrEx.map((val) => {
-  return val.toString();
-});
-console.log(result)
+/**
+ * Dado un array de numeros
+ * Filtrar los que son pares
  */
-/* const arrEx = (arr) => arr.map((val)=> val.toString())
-console.log(arrEx([11,2,3,10,5])) */
 
-// .map()
-// función
-// Dado unn array como parametro
-// capitalizar todos los elementos que sean strings
-// typeof variable
-// input: ['hOlA', 'mundo', 123]
-// output -> ['Hola','Mundo', 123]
-
-const capitalizeArr = (arr) => {
-	let arrcapitalized =[]
-	arr.map((val) => {
-	  if (typeof val == "string") {
-		val.toLowerCase()
-		val[0].toLocaleUpperCase()
-	  }
-  });
-	return arr
-  }
-  
-  
-  let resultCap = capitalizeArr(["hOlA", "mundo", 123]);
-  console.log(resultCap);
+ let arrToFilter = [1,2,3,4,5,6,7]
+ // let arrFiltered = arrToFilter.filter(item => item % 2 === 0 )
+ let arrFiltered = []
+ 
+ // arrFiltered = arrToFilter.filter( (numero) => {
+ // 	if(	numero % 2 === 0 ) {
+ // 		console.log(numero)
+ // 		return numero
+ // 	}
+ // })
+ 
+ arrFiltered = arrToFilter.filter( (numero, index, arr) => {
+	 if(numero % 2 === 0 ) {
+		 return numero
+	 }
+ })
+ 
+ // console.log(arrFiltered)
+ 
+ 
+ /**
+  * 
+  * -> ['hola','mundo', 0, 5]
+  * -> ['hola','mundo']
+  * 1. funcion
+  * 2. filtrar solo los que son de typo string
+  * 
+  */
+ 
+ // const filterStrings = (arr) => {
+ // 	let arrStrings = []
+ // 	arrStrings = arr.filter((item) => {
+ // 		if(typeof item === 'string') {
+ // 			return item
+ // 		}
+ // 	})
+ // 	return arrStrings
+ // }
+ 
+ // const filterStrings = (arr) => {
+ // 	let arrStrings = []
+ // 	arrStrings = arr.filter((item) => {
+ // 		return typeof item === 'string' ? item : null
+ // 	})
+ // 	return arrStrings
+ // }
+ 
+ // filterStrings(['hola','mundo', 0, 5])
+ 
+ const filterStrings = (arr) => {
+	 return arr.filter((item) => typeof item === 'string')
+	 .map( (item) => item.toUpperCase())
+	 .filter( (item ) => item.slice(0,1) === 'H')
+ }
+ 
+ const filterStringsLarge = (arr) => {
+	 let onlyStrings = []
+	 onlyStrings = arr.filter( (item) => {
+		 if(typeof item === 'string') {
+			 return item
+		 }
+	 })
+ 
+	 let toUpper = []
+	 toUpper = onlyStrings.map( (item) => {
+		 return item.toUpperCase()
+	 })
+ 
+	 let onlyH = []
+	 onlyH = toUpper.filter( (item ) => { 
+		 if(item.slice(0,1) === 'H') {
+			 return item
+		 }
+	 })
+ 
+	 return onlyH
+ }
+ 
+ 
+ 
+ let arr = [5,2,3]
+ let acumulador = 0
+ 
+ // arr.forEach( element => {
+ // 	acumulador = acumulador + element
+ // })
+ 
+ // console.log(acumulador)
+	 
+ // arr.reduce()
+ let suma = arr.reduce((acc, cv, index, arr)=> {
+	 // console.log(acc, cv)
+	 return acc + cv
+ }, 0 )
+ 
+ let arrStr = ['hola', 'mundo']
+ let concatStr = arrStr.reduce((acc, cv, index, arr)=> {
+	 console.log(acc, cv, index, arr )
+	 return acc + cv
+ 
+ }, 'saludo: ')
+ 
+ console.log(concatStr)
