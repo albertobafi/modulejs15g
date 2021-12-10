@@ -80,7 +80,47 @@ ulElement.appendChild(liSecond)
 document.getElementsByTagName('body')[0].appendChild(ulElement)
 // body -> <ul> <li>item 1</li> <li>item 2</li> </ul>
 
+//Crear elementos
+/* createElement('tag')
+textContent()
+apendChild() */
+let uElement = document.createElement('ul')
+let liFirst = document.createElement('li')
 
+liFirst.textContent = 'item 1'
+uElement.appendChild(liFirst)
+
+let liSecond = document.createElement('li')
+
+liSecond.textContent = 'item 2'
+uElement.appendChild(liSecond)
+
+document.getElementsByTagName('body')[0].appendChild(uElement)
+
+let uElementEx = document.createElement('ul')
+let liHome = document.createElement('li')
+let liProducts = document.createElement('li')
+let liAboutUs = document.createElement('li')
+
+uElementEx.setAttribute('id','menu')
+uElementEx.setAttribute('class','menu')
+
+liHome.textContent = 'Home'
+liHome.setAttribute('class','menu')
+liProducts.textContent = 'Products'
+liProducts.setAttribute('class','menu')
+liAboutUs.textContent = 'About Us'
+liAboutUs.setAttribute('class','menu')
+
+
+
+uElementEx.appendChild(liHome)
+uElementEx.appendChild(liProducts)
+uElementEx.appendChild(liAboutUs)
+
+
+
+document.getElementsByTagName('body')[0].appendChild(uElementEx)
 // data attributes
 // propiedades personalizadas
 
