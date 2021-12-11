@@ -1,136 +1,48 @@
 
 /**
- * Selecionar elementos
+ * Dado un array
+ * ['colima', 'colombia','Estado de mexico']
  * 
- * 1. Selecionar por ID
+ * EScuchar el evento keyup en un input
+ * Filtrar del array las coincidencias
+ * Pintar las coincidencias en una lista
+ * 
  */
 
-//  1. Selecionar por ID
-document.getElementById('head__title') 
-document.getElementsByTagName('li')
-document.getElementsByClassName('link__menu')
+ let cities = ['colima', 'colombia','Estado de mexico']
 
-document.querySelector('#head__title')
-document.querySelector('li')
-document.querySelector('.link__menu')
-document.querySelectorAll('.link__menu')
-// document.querySelectorAll('')
-
-/**
- * Obtener atributos
- * Setear atributos
- */
-
-// get
-let title = document.querySelector('#head__title').getAttribute('data-title')
-let level = document.querySelector('#head__title').getAttribute('data-level')
-
-// set
-document.querySelector('#head__title').setAttribute('data-custom','random')
-// reemplazando clases 
-// document.querySelector('#head__title').setAttribute('class','trees cuatro')
-
-// Agregar clases
-// document.querySelector('#head__title').classList.add('clase3')
-// remover clases
-// document.querySelector('#head__title').classList.remove('clase2')
-
-// comprobar si existe un atributo
-document.querySelector('#head__title').hasAttribute('class')
-
-
-// comprobar si el titulo tiene class
-/**
- * Si si, comprobar 
- * ---si tiene la clase "clase1 clase2"
- * ----- Agregar la "clase 3"
- * ---sino 
- * ----- Agregar la clase "custom"
- */
-
-let elemenTitle = document.querySelector('#head__title')
-if( elemenTitle.hasAttribute('class') ) {
-    if( elemenTitle.getAttribute('class') === 'clase1 clase2' ) {
-        elemenTitle.classList.add('clase3')
-    } else {
-        elemenTitle.classList.add('custom')
-    }
-}
-// createElement('tag')
-// textContent
-// appendChild
-
-let ulElement = document.createElement('ul')
-// <ul></ul>
-
-let liFirst = document.createElement('li')
-// <li></li>
-liFirst.textContent = 'item 1'
-// <li>item 1</li>
-ulElement.appendChild(liFirst)
-// <ul> <li>item 1</li> </ul>
-
-let liSecond = document.createElement('li')
-// <li></li>
-liSecond.textContent = 'item 2'
-// <li>item 2</li>
-ulElement.appendChild(liSecond)
-// <ul> <li>item 1</li> <li>item 2</li> </ul>
-
-document.getElementsByTagName('body')[0].appendChild(ulElement)
-// body -> <ul> <li>item 1</li> <li>item 2</li> </ul>
-
-//Crear elementos
-/* createElement('tag')
-textContent()
-apendChild() */
-let uElement = document.createElement('ul')
-let liFirst = document.createElement('li')
-
-liFirst.textContent = 'item 1'
-uElement.appendChild(liFirst)
-
-let liSecond = document.createElement('li')
-
-liSecond.textContent = 'item 2'
-uElement.appendChild(liSecond)
-
-document.getElementsByTagName('body')[0].appendChild(uElement)
-
-let uElementEx = document.createElement('ul')
-let liHome = document.createElement('li')
-let liProducts = document.createElement('li')
-let liAboutUs = document.createElement('li')
-
-uElementEx.setAttribute('id','menu')
-uElementEx.setAttribute('class','menu')
-
-liHome.textContent = 'Home'
-liHome.setAttribute('class','menu')
-liProducts.textContent = 'Products'
-liProducts.setAttribute('class','menu')
-liAboutUs.textContent = 'About Us'
-liAboutUs.setAttribute('class','menu')
-
-
-
-uElementEx.appendChild(liHome)
-uElementEx.appendChild(liProducts)
-uElementEx.appendChild(liAboutUs)
-
-
-
-document.getElementsByTagName('body')[0].appendChild(uElementEx)
-// data attributes
-// propiedades personalizadas
-
-
-
-/**
- * Seleccionar padres e hijos (traversing)
- */
-
-
-/**
- * Manipular elementos del DOM
- */
+ const filterCity = () => {
+     // filtrar ciudades
+     let citySearch = document.querySelector('#name__city').value
+     let citiesFiltered = cities.filter( (city) => {
+         if(city.includes(citySearch) === true){
+             return city
+         }
+     })
+ 
+     // creo el layout con las ciudades filtradas
+     let lista = ''
+     citiesFiltered.forEach( (value) => {
+         lista += `<li>${value}</li>`
+     })
+ 
+     // agrego el layout
+     document.querySelector('#listCity').innerHTML = lista
+ }
+ 
+ 
+ 
+ let koders = [
+     {
+         name: 'emilio',
+         age: 30,
+         city: 'Guadalajara'
+     },
+     {
+         name: 'Brisset',
+         age: 30,
+         city: 'Lima'
+     }
+ ]
+ 
+ 
