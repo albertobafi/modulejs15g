@@ -1,7 +1,7 @@
 // POST crear datos
 const createUser =  (objPost) => {
     const xhttp = new XMLHttpRequest()
-    xhttp.open( "POST" , "https://genjs-3e4eb-default-rtdb.firebaseio.com//posts/.json", true)
+    xhttp.open( "POST" , "https://genjs-292ac-default-rtdb.firebaseio.com/posts/.json", true)
     xhttp.onload = function(data) {
         if(data.target.status === 200){
             document.querySelector('#title').value = ''
@@ -17,33 +17,59 @@ const createUser =  (objPost) => {
     xhttp.send( JSON.stringify(objPost) )
 }
 
+const createUserFetch =  (objPost) => {
+    fetch('https://genjs-292ac-default-rtdb.firebaseio.com/posts/.json', {
+        method:'POST',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objPost)
+    }).then( (res) => {
+        res.json()
+        .then( (newpost) => {
+            console.log(newpost)
+            document.querySelector('#title').value = ''
+            document.querySelector('#author').value = ''
+            document.querySelector('#timetoread').value = ''
+            document.querySelector('#resume').value = ''
+    
+            document.getElementById('post__id').innerText = newpost.name
+            document.getElementById('alert__response').classList.remove('d-none')
+        })
+    }).catch((err)=> {
+        console.log(err)
+    })
+
+    
+}
+
 
 let send__post = document.querySelector('#send__post')
 send__post.addEventListener('click', () => {
-    
+
     let title = document.querySelector('#title').value
     let author = document.querySelector('#author').value
     let timetoread = document.querySelector('#timetoread').value
     let resume = document.querySelector('#resume').value
-    
-    // console.log(title, author, timetoread, resume)
+    if(
+        title !== '' &&
+        author !== '' &&  
+        timetoread !== '' &&
+        resume !== ''
+    ){
 
-    let objNewPost = {
-        title: title,
-        author: author,
-        timetoread: timetoread,
-        resume: resume
+        let objNewPost = {
+            title: title,
+            author: author,
+            timetoread: timetoread,
+            resume: resume
+        }
+    
+        // createUser(objNewPost)
+        createUserFetch(objNewPost)
+    } else {
+        alert('Algunos datos estan vacios')
     }
 
-    createUser(objNewPost)
 })
 
-
-
-
-
-// let objNewPost =  {
-//     author: 'Jorge luis',
-//     title: 'foo',
-//     body: 'bar lorem',
-// }
